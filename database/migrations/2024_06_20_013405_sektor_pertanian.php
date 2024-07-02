@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('periode_id');
             $table->string('jumlah');
             $table->string('warna');
+            $table->string('jenis_id');
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('periode',function(Blueprint $table){
             $table->id();
             $table->string('periode');
+            $table->integer('active')->default(0);
             $table->timestamps();
         });
 

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\JenisKomoditas;
 use App\Models\SektorPertanian;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PeriodeSeeder::class,
             SektorPertanianSeeder::class,
+            JenisKomoditasSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

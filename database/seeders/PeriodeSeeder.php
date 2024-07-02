@@ -26,7 +26,8 @@ class PeriodeSeeder extends Seeder
         ],[
             'periode'=>'2023'
         ],[
-            'periode'=>'2024'
+            'periode'=>'2024',
+            'active'=>1
         ]];
         
         foreach($periode as $each){
