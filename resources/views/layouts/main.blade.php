@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   @include('include.topHead')
+  @stack('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
@@ -18,5 +19,6 @@
 </div>
 @include('include.footer')
 @include('include.bottomBody')
+@stack('scripts')
 </body>
 </html>

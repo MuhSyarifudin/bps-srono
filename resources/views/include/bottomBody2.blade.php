@@ -257,6 +257,59 @@ var myBarChart = new Chart(ctx, {
 
 });
 
+$(document).ready(function() {
+    var ctx = $('#jumlahSekolahChart')[0].getContext('2d');
+    var jumlahSekolahChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['TK Negeri', 'TK Swasta', 'SD Negeri', 'SD Swasta'],
+            datasets: [
+                {
+                    label: '2021/2022',
+                    data: [0, 50, 43, 1],
+                    backgroundColor: 'rgba(54, 162, 235, 1)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: '2022/2023',
+                    data: [0, 50, 43, 1],
+                    backgroundColor: 'rgba(255, 99, 132, 1)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Jumlah Sekolah'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Jenis Sekolah'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Jumlah Sekolah di Kecamatan Srono per Periode'
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        }
+    });
+});
+
+
 function submitFormWithPeriode(selectElement) {
 var form = document.getElementById('periodeForm');
 var selectedValue = selectElement.value;
@@ -297,6 +350,5 @@ $(document).ready(function(){
                 }
             });
         });
-
 
 </script>  

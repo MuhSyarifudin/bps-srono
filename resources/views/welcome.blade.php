@@ -18,7 +18,7 @@
                         @cleanString($deskripsi->deskripsi)
                     </div>
                     <div class="col-md-5 px-6">
-                        <img src="{{ asset('peta-srono.png') }}" alt="" class="map p-5">
+                        <img src="{{ asset(''.$deskripsi->image.'') }}" alt="" class="map p-5">
                     </div>
                 </div>
             </div>
@@ -129,7 +129,16 @@
                         @endif
                     </div>
                 </div>
-
+            </div>
+            <div class="container-fluid penduduk-container">
+                <div class="col-md-10 pt-4 penduduk">
+                    <center>
+                        <h2 class="heading" id="pendidikan" >PENDIDIKAN</h2>
+                    </center>
+                </div>
+                <div class="col-md-12">
+                    <canvas id="jumlahSekolahChart" width="600" height="400"></canvas>
+                </div>
             </div>
             <button id="pushToTopBtn" title="Go to top">
                     <i class="fa-solid fa-arrow-up"></i>        

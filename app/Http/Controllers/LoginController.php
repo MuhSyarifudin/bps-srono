@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Periode;
+use App\Models\SektorPertanian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -37,7 +39,13 @@ class LoginController extends Controller
     }
 
     public function dashboard(){
-        return view('admin.index',['title'=>'Dashboard']);
+
+        $periode_active = Periode::where('active','1')->first();
+        $periode = Periode::all();
+
+        $jumlah = SektorPertanian::whereNot('jenis_id','4')->where('periode_id',$periode_active->id)->sum('jumlah');
+
+        return view('admin.index',['title'=>'Dashboard','jumlah_seluruh_komoditas'=>$jumlah,'periode_active'=>$periode_active,'periode'=>$periode]);
     }
 
     public function logout(){

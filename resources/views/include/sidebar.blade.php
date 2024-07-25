@@ -12,10 +12,13 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ url('/assets/img/user.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          @php
+            $avatars = Auth::user()->avatars == '' ? 'user-default.jpg' : Auth::user()->avatars;
+          @endphp
+          <img src="{{ url('/assets/avatars/'.$avatars) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{ route('index.profil') }}" class="d-block">{{ Auth::user()->username }}</a>
         </div>
       </div>
 
@@ -37,12 +40,12 @@
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Charts
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left active"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('index.sektor.pertanian') }}" class="nav-link">
+                <a href="{{ route('index.sektor.pertanian') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sektor Pertanian</p>
                 </a>

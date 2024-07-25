@@ -5,6 +5,7 @@
             <li><a href="#">HOME</a></li>
             <li><a href="#populasi">POPULASI</a></li>
             <li><a href="#komoditas">KOMODITAS</a></li>
+            <li><a href="#pendidikan">PENDIDIKAN</a></li>
         </ul>
         <ul style="list-style: none;font-weight: 600;display: inline;float:right">
             <li>

@@ -8,15 +8,15 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h2 class="card-title">
-                Tambah Data Sektor Pertanian
+                Edit Data Sektor Pertanian
               </h2>
             </div>
             <div class="card-body">
-              <form action="{{ route('simpan.sektor.pertanian') }}" method="POST">
+              <form action="{{ route('update.sektor.pertanian',['id'=>$komoditas->id]) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="komoditas">Nama Komoditas : </label>
-                    <input type="text" id="komoditas" name="komoditas" class="form-control @error('komoditas')
+                    <input type="text" id="komoditas" name="komoditas" value="{{ $komoditas->komoditas }}" class="form-control @error('komoditas')
                     is-invalid                     
                     @enderror">
                     @error('komoditas')
@@ -30,7 +30,7 @@
                     @enderror">
                         <option value="">Pilih Periode</option>
                         @foreach ($periode as $item)
-                        <option value="{{ $item->id }}">{{ $item->periode }}</option>
+                        <option value="{{ $item->id }}" {{ $komoditas->periode_id == $item->id ? "selected" : "" }}>{{ $item->periode }}</option>
                         @endforeach
                     </select>
                     @error('periode')
@@ -43,10 +43,10 @@
                         is-invalid
                     @enderror">
                         <option value="">Pilih Jenis Komoditas</option>
-                        <option value="1">Sayuran</option>
-                        <option value="2">Buah</option>
-                        <option value="3">Biofarmaka</option>
-                        <option value="4">Tanaman Hias</option>
+                        <option value="1" {{ $komoditas->jenis_id == 1 ? "selected" : "" }}>Sayuran</option>
+                        <option value="2" {{ $komoditas->jenis_id == 2 ? "selected" : "" }}>Buah</option>
+                        <option value="3" {{ $komoditas->jenis_id == 3 ? "selected" : "" }}>Biofarmaka</option>
+                        <option value="4" {{ $komoditas->jenis_id == 4 ? "selected" : "" }}>Tanaman Hias</option>
                     </select>
                     @error('jenis')
                         <p class="text-danger">{{ $message }}</p>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <label for="jumlah">Jumlah Komoditas : </label>
-                    <input type="number" name="jumlah" id="jumlah" class="form-control @error('jumlah')
+                    <input type="number" name="jumlah" id="jumlah" value="{{ $komoditas->jumlah }}" class="form-control @error('jumlah')
                         is-invalid
                     @enderror">
                     @error('jumlah')
@@ -63,7 +63,7 @@
                 </div>
                 <div>
                     <label for="warna">Warna Diagram : </label>
-                    <input type="color" name="warna" class="form-control @error('warna')
+                    <input type="color" name="warna" value="{{ $komoditas->warna }}" class="form-control @error('warna')
                     is-invalid                        
                     @enderror" id="warna" style="width: 120px;height:40px">
                     @error('warna')
