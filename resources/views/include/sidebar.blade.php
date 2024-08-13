@@ -17,8 +17,14 @@
           @endphp
           <img src="{{ url('/assets/avatars/'.$avatars) }}" class="img-circle elevation-2" alt="User Image">
         </div>
+        @php
+          $nama = Auth::user()->name;
+          $nmarray = explode(' ',$nama,-2);
+
+
+        @endphp
         <div class="info">
-          <a href="{{ route('index.profil') }}" class="d-block">{{ Auth::user()->username }}</a>
+          <a href="{{ route('index.profil') }}" class="d-block">Muhamad Syarifudin</a>
         </div>
       </div>
 
@@ -62,30 +68,6 @@
                   <p>Sektor Perikanan</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Pendidikan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Kesehatan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Perdagangan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Pekerjaan</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -104,59 +86,6 @@
                 </a>
               </li>
               
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('tambah.sektor.pertanian') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Pertanian</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Perkebunan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Perikanan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Pendidikan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Kesehatan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Perdagangan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sektor Pekerjaan</p>
-                </a>
-              </li>
             </ul>
           </li>
         </ul>

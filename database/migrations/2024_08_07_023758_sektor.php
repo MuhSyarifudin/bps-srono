@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sektor_pertanian',function(Blueprint $table){
+        Schema::create('sektor',function(Blueprint $table){
             $table->id();
-            $table->string('komoditas');
-            $table->unsignedBigInteger('periode_id');
-            $table->string('jumlah');
-            $table->string('warna');
-            $table->string('jenis_id');
+            $table->string('nama_sektor');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sektor_pertanian');
+        Schema::dropIfExists('sektor');
     }
 };

@@ -19,10 +19,11 @@ class UserSeeder extends Seeder
 
         $user = [
             [
-            'username'=>'Syarifudin',
+            'username'=>'MuhSyarifudin',
             'name'=>'Muhamad Syarifudin',
             'email'=>'muhamadsyarifudin708@gmail.com',
-            'password'=>Hash::make('12345678')]
+            'password'=>Hash::make('123.Brilian'),
+            'avatars'=>'user-1.jpg']
         ];
 
         foreach ($user as $each) {

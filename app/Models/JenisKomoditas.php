@@ -11,12 +11,12 @@ class JenisKomoditas extends Model
     use HasFactory;
     
     protected $table = 'jenis_komoditas';
-    protected $fillable = ['jenis'];
+    protected $fillable = ['nama_komoditas','sektor_id'];
     public $timestamps = true;
 
-    public function sektor_pertanian(): HasMany
+    public function komoditas(): HasMany
     {
-        return $this->hasMany(SektorPertanian::class);
+        return $this->hasMany(JenisKomoditas::class,'jenis_id');
     }
     
 }

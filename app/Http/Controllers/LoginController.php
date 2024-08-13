@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Komoditas;
 use App\Models\Periode;
 use App\Models\SektorPertanian;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class LoginController extends Controller
         $periode_active = Periode::where('active','1')->first();
         $periode = Periode::all();
 
-        $jumlah = SektorPertanian::whereNot('jenis_id','4')->where('periode_id',$periode_active->id)->sum('jumlah');
+        $jumlah = Komoditas::whereNot('jenis_id','4')->where('periode_id',$periode_active->id)->sum('jumlah');
 
         return view('admin.index',['title'=>'Dashboard','jumlah_seluruh_komoditas'=>$jumlah,'periode_active'=>$periode_active,'periode'=>$periode]);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Komoditas;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jenis_komoditas',function(Blueprint $table){
-            $table->id();
-            $table->string('jenis');
-            $table->timestamps();
+        Schema::table('komoditas', function (Blueprint $table) {
+            $table->string("jumlah");
+            $table->string('periode_id');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jenis_komoditas');
+        
     }
 };

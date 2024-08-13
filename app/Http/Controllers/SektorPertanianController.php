@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SektorPertanian;
-use App\Models\JenisKomoditas;
 use App\Models\Periode;
+use App\Models\Komoditas;
+use Illuminate\Support\Facades\DB;
 
 class SektorPertanianController extends Controller
 {
@@ -14,24 +15,22 @@ class SektorPertanianController extends Controller
 
         $periode = Periode::all();
         $periode_id = $request->periode ?? 0;
+        $periode_sekarang = Periode::where('active','1')->first();
 
-        $komoditas = SektorPertanian::where('periode_id',$periode_id)->get();
+        $komoditas = DB::table('komoditas')
+        ->join('jenis_komoditas as jk', 'komoditas.jenis_id', '=', 'jk.id')
+        ->where('komoditas.periode_id', $periode_id)
+        ->select('komoditas.*', 'jk.jenis_komoditas','jk.id AS jk_id')
+        ->get();
 
-        return view('tabel.pertanian',['title'=>'Sektor Pertanian','komoditas_sektor_pertanian'=>$komoditas,'periode'=>$periode,'periode_id'=>$periode_id]);
+        return view('tabel.pertanian',['title'=>'Sektor Pertanian','komoditas_sektor_pertanian'=>$komoditas,'periode'=>$periode,'periode_id'=>$periode_id,'periode_sekarang'=>$periode_sekarang]);
     }
 
-    public function tambah_sektor_pertanian(){
-
-        $periode = Periode::all();
-        $jenis = JenisKomoditas::all();
-
-        return view('form.pertanian',['title'=>'Sektor Pertanian','periode'=>$periode,'jenis'=>$jenis]);
-    }
-
+    
     public function store_sektor_pertanian(Request $request){
         
-        // dd($request->warna);
-
+        $periode_id = $request->query('periode');
+        
         $request->validate([
             'komoditas'=>['required'],
             'periode'=>['required'],
@@ -46,27 +45,22 @@ class SektorPertanianController extends Controller
             'warna.required'=>'Tolong isi warna diagram komoditas.',
         ]);
 
-        SektorPertanian::create([
+        $pertanian = Komoditas::create([
             'komoditas'=>$request->komoditas,
             'periode_id'=>$request->periode,
             'jenis_id'=>$request->jenis,
             'jumlah'=>$request->jumlah,
-            'warna'=>$request->warna
+            'warna'=>$request->warna,
+            'sektor_id'=>1
         ]);
 
 
-        return redirect()->route('tambah.sektor.pertanian');
-    }
-
-    public function edit_sektor_pertanian($id){
-
-        $komoditas = SektorPertanian::where('id',$id)->first();
-        $periode = Periode::all();
-
-        return view('form.edit.pertanian',['title'=>'Sektor Pertanian','komoditas'=>$komoditas,'periode'=>$periode]);
+        return redirect()->route('index.sektor.pertanian',['periode'=>$periode_id]);
     }
 
     public function update_sektor_pertanian(Request $request,$id){
+
+        $periode_id = $request->query('periode');
 
         $request->validate([
             'komoditas'=>['required'],
@@ -82,7 +76,7 @@ class SektorPertanianController extends Controller
             'warna.required'=>'Tolong isi warna diagram komoditas.',
         ]);
         
-        $komoditas = SektorPertanian::where('id',$id)->update([
+        komoditas::where('id',$id)->update([
             'komoditas'=>$request->komoditas,
             'periode_id'=>$request->periode,
             'jumlah'=>$request->jumlah,
@@ -90,17 +84,15 @@ class SektorPertanianController extends Controller
             'jenis_id'=>$request->jenis
         ]);
 
-        
-        $komoditas = SektorPertanian::where('id',$id)->first();
-        $periode = Periode::all();
+        return redirect()->route('index.sektor.pertanian',['periode'=>$periode_id]);
 
-        return redirect()->route('edit.sektor.pertanian',['id'=>$id,'komoditas'=>$komoditas,'periode'=>$periode]);
     }
 
-    public function destroy_sektor_pertanian($id){
+    public function destroy_sektor_pertanian(Request $request,$id){
         
-        $get_periode_id = SektorPertanian::where('id',$id)->delete();
+        $periode_id = $request->query('periode');
+        $get_periode_id = Komoditas::where('id',$id)->delete();
 
-        return redirect()->route('index.sektor.pertanian');
+        return redirect()->route('index.sektor.pertanian',['periode'=>$periode_id]);
     }
 }

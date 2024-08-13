@@ -18,7 +18,7 @@
                   {{ $deskripsi->deskripsi }}
                 </textarea>
                 <div class="form-group">
-                  <input type="file" class="form-control" id="InputPoster" name="poster">
+                  <input type="file" class="form-control" id="InputPoster" name="poster" accept=".jpg,.png,.gif">
                 </div>
                 <div class="form-group">
                   <div class="col-md-2">

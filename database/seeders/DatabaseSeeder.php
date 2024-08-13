@@ -21,11 +21,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // $this->call([
+        //     PeriodeSeeder::class,
+        //     SektorPertanianSeeder::class,
+        //     JenisKomoditasSeeder::class,
+        //     UserSeeder::class
+        // ]);
         $this->call([
-            PeriodeSeeder::class,
-            SektorPertanianSeeder::class,
+            SektorSeeder::class,
             JenisKomoditasSeeder::class,
-            UserSeeder::class
+            KomoditasSeeder::class,
+            UserSeeder::class,
+            PeriodeSeeder::class
         ]);
     }
 }

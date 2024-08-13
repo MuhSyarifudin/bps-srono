@@ -20,6 +20,12 @@ class DeskripsiController extends Controller
     }
 
     public function store_deskripsi(Request $request){
+
+        $request->validate([
+            'deskripsi'=>'required',
+            'poster'=>'mimes:jpg,png,gif'
+        ]);
+
         $deskripsi = Deskripsi::find('1');
         $deskripsi->deskripsi = $request->deskripsi;
 

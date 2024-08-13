@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\JenisKomoditas;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\JenisKomoditas;
 
 class JenisKomoditasSeeder extends Seeder
 {
@@ -14,18 +13,13 @@ class JenisKomoditasSeeder extends Seeder
      */
     public function run(): void
     {
-
-        DB::table('jenis_komoditas')->truncate();
-
         $jenis_komoditas = [
-            ['jenis'=>'sayuran'],
-            ['jenis'=>'buah'],
-            ['jenis'=>'biofarmaka'],
-            ['jenis'=>'tanaman hias'],
+        ["jenis_komoditas"=>"Sayuran","sektor_id"=>"1"],
+        ["jenis_komoditas"=>"Buah","sektor_id"=>"1"],
+        ["jenis_komoditas"=>"Biofarmaka","sektor_id"=>"1"],
+        ["jenis_komoditas"=>"Tanaman Hias","sektor_id"=>"1"]];
 
-        ];
-
-        foreach($jenis_komoditas as $each){
+        foreach ($jenis_komoditas as $each) {
             JenisKomoditas::create($each);
         }
     }

@@ -36,13 +36,14 @@ Route::middleware('auth')->group(function(){
     Route::get('/form/edit-deskripsi',[DeskripsiController::class,'edit_deskripsi'])->name('edit.deskripsi');
     Route::post('/form/edit-deskripsi',[DeskripsiController::class,'store_deskripsi'])->name('simpan.deskripsi');
     Route::get('/index/sektor-pertanian',[SektorPertanianController::class,'index'])->name('index.sektor.pertanian');
-    Route::get('/tambah/sektor-pertanian',[SektorPertanianController::class,'tambah_sektor_pertanian'])->name('tambah.sektor.pertanian');
+    // Route::get('/tambah/sektor-pertanian',[SektorPertanianController::class,'tambah_sektor_pertanian'])->name('tambah.sektor.pertanian');
     Route::post('/tambah/sektor-pertanian',[SektorPertanianController::class,'store_sektor_pertanian'])->name('simpan.sektor.pertanian');
-    Route::get('/edit/{id}/sektor-pertanian',[SektorPertanianController::class,'edit_sektor_pertanian'])->name('edit.sektor.pertanian');
-    Route::post('/edit/{id}/sektor-pertanian',[SektorPertanianController::class,'update_sektor_pertanian'])->name('update.sektor.pertanian');
+    // Route::get('/edit/{id}/sektor-pertanian',[SektorPertanianController::class,'edit_sektor_pertanian'])->name('edit.sektor.pertanian');
+    Route::post('/update/{id}/sektor-pertanian',[SektorPertanianController::class,'update_sektor_pertanian'])->name('update.sektor.pertanian');
     Route::get('/hapus/{id}/sektor-pertanian',[SektorPertanianController::class,'destroy_sektor_pertanian'])->name('hapus.sektor.pertanian');
     Route::get('/profil',[ProfilController::class,'index'])->name('index.profil');
-    Route::post('/profil',[ProfilController::class,'updateProfil'])->name('update.profil');
+    Route::post('/profil',[ProfilController::class,'update_profil'])->name('update.profil');
+    Route::post('/password',[ProfilController::class,'update_password'])->name('update.password');
     Route::get('/periode', function (Request $request) {
         Periode::where('active','1')->update(['active'=>'0']);
         Periode::where('id',$request->periode)->update(['active'=>'1']);

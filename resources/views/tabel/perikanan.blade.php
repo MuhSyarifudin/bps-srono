@@ -140,8 +140,8 @@
                         <tr>
                             <th>{{ $key + 1 }}.</th>
                             <td>{{ $item->komoditas }}</td>
-                            <td>{{ $item->jumlah." "  }}{{ $item->jk_id !== 4 ? 'Kg' : 'Tangkai' }}</td>
-                            <td>{{ ucwords($item->jenis_komoditas) }}</td>
+                            <td>{{ $item->jumlah }} {{ $item->jenis->id !== 4 ? 'Kg' : 'Tangkai' }}</td>
+                            <td>{{ ucwords($item->jenis->jenis) }}</td>
                             <td width="120"><div style="width: 200px;height: 20px;background-color: {{ $item->warna }}"></div>
                                 <div class="modal fade" id="modal-edit-{{ $item->id }}">
                                     <div class="modal-dialog modal-lg">
@@ -166,16 +166,17 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="periode">Periode : </label>
-                                                    <select name="periode" id="periode" class="form-control @error('periode')
-                                                    is-invalid                        
+                                                    <label for="jenis">Jenis Komoditas : </label>
+                                                    <select name="jenis" id="jenis" class="form-control @error('jenis')
+                                                        is-invalid
                                                     @enderror">
-                                                        <option value="">Pilih Periode</option>
-                                                        @foreach ($periode as $item2)
-                                                        <option value="{{ $item2->id }}" {{ $item2->id == $item->periode_id ? 'selected' : '' }}>{{ $item2->periode }}</option>
-                                                        @endforeach
+                                                        <option value="">Pilih Jenis Komoditas</option>
+                                                        <option value="1">Sayuran</option>
+                                                        <option value="2">Buah</option>
+                                                        <option value="3">Biofarmaka</option>
+                                                        <option value="4">Tanaman Hias</option>
                                                     </select>
-                                                    @error('periode')
+                                                    @error('jenis')
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
@@ -227,6 +228,7 @@
                                 <!-- /.modal -->
                             </td>
                             <td class="text-center">
+                                {{-- <a href="{{ route('edit.sektor.pertanian',['id'=>$item->id]) }}" class="btn btn-sm btn-primary">Edit</a> --}}
                                 <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit-{{ $item->id }}">Edit</button>
                                 <a href="{{ route('hapus.sektor.pertanian',['id'=>$item->id,'periode'=>$item->periode_id]) }}" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
