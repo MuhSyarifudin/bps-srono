@@ -42,7 +42,7 @@ class LoginController extends Controller
     public function dashboard(){
 
         $periode_active = Periode::where('active','1')->first();
-        $periode = Periode::all();
+        $periode = Periode::orderBy('periode','asc')->get();
 
         $jumlah_komoditas_pertanian = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','1')->count();
         $jumlah_komoditas_perkebunan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','2')->count();

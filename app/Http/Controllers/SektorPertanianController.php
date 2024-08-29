@@ -14,7 +14,7 @@ class SektorPertanianController extends Controller
 
     public function index(Request $request){
 
-        $periode = Periode::all();
+        $periode = Periode::orderBy('periode','asc')->get();
         $periode_id = $request->periode ?? 0;
         $periode_sekarang = Periode::where('active','1')->first();
 

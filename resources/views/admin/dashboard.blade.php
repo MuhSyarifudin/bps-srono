@@ -49,7 +49,7 @@
               <div class="inner">
                 <h3>{{ $jumlah_komoditas_perkebunan }}</h3>
 
-                <p>Sektor Perkebunan</p>
+                <p>Komoditas Perkebunan</p>
               </div>
               <div class="icon">
               </div>
@@ -63,7 +63,7 @@
               <div class="inner">
                 <h3>{{ $jumlah_komoditas_perikanan }}</h3>
 
-                <p>Sektor Perikanan</p>
+                <p>Komoditas Perikanan</p>
               </div>
               <div class="icon">
               </div>
@@ -77,7 +77,7 @@
               <div class="inner">
                 <h3>{{ $jumlah_komoditas_peternakan }}</h3>
 
-                <p>Sektor Peternakan</p>
+                <p>Komoditas Peternakan</p>
               </div>
               <div class="icon">
               </div>

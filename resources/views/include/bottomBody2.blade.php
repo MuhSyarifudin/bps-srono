@@ -7,22 +7,22 @@ var myPieChart = new Chart(ctx, {
 type: 'pie', // jenis chart: pie
 data: {
     labels: [
-        @foreach ( $komoditas_sayuran as $each )
+        @foreach ( komoditas_pertanian($periode_id,1) as $each )
         '{{ $each->komoditas }}',
         @endforeach],
     datasets: [{
         label: '# of Votes',
         data: [
-            @foreach ( $komoditas_sayuran as $each )
+            @foreach ( komoditas_pertanian($periode_id,1) as $each )
             '{{ $each->jumlah }}',
             @endforeach],
         backgroundColor: [
-            @foreach ( $komoditas_sayuran as $each )
+            @foreach ( komoditas_pertanian($periode_id,1) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ( $komoditas_sayuran as $each )
+            @foreach ( komoditas_pertanian($periode_id,1) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -61,24 +61,24 @@ var myPieChart = new Chart(ctx, {
 type: 'pie', // jenis chart: pie
 data: {
     labels: [
-        @foreach ($komoditas_buah as $each )
+        @foreach (komoditas_pertanian($periode_id,2) as $each )
             '{{ $each->komoditas }}',
             @endforeach
     ],
     datasets: [{
         label: '# of Votes',
         data: [
-            @foreach ($komoditas_buah as $each )
+            @foreach (komoditas_pertanian($periode_id,2) as $each )
                 '{{ $each->jumlah }}',
             @endforeach
         ],
         backgroundColor: [
-            @foreach ($komoditas_buah as $each )
+            @foreach (komoditas_pertanian($periode_id,2) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ($komoditas_buah as $each )
+            @foreach (komoditas_pertanian($periode_id,2) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -118,24 +118,24 @@ var myPieChart = new Chart(ctx, {
 type: 'pie', // jenis chart: pie
 data: {
     labels: [
-        @foreach ($komoditas_biofarmaka as $each )
+        @foreach (komoditas_pertanian($periode_id,3) as $each )
             '{{ $each->komoditas }}',
             @endforeach
     ],
     datasets: [{
         label: '# of Votes',
         data: [
-            @foreach ($komoditas_biofarmaka as $each )
+            @foreach (komoditas_pertanian($periode_id,3) as $each )
                 '{{ $each->jumlah }}',
             @endforeach
         ],
         backgroundColor: [
-            @foreach ($komoditas_biofarmaka as $each )
+            @foreach (komoditas_pertanian($periode_id,3) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ($komoditas_biofarmaka as $each )
+            @foreach (komoditas_pertanian($periode_id,3) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -174,24 +174,24 @@ var myPieChart = new Chart(ctx, {
 type: 'pie', // jenis chart: pie
 data: {
     labels: [
-        @foreach ($komoditas_tanaman_hias as $each )
+        @foreach (komoditas_pertanian($periode_id,4) as $each )
             '{{ $each->komoditas }}',
             @endforeach
     ],
     datasets: [{
         label: '# of Votes',
         data: [
-            @foreach ($komoditas_tanaman_hias as $each )
+            @foreach (komoditas_pertanian($periode_id,4) as $each )
                 '{{ $each->jumlah }}',
             @endforeach
         ],
         backgroundColor: [
-            @foreach ($komoditas_tanaman_hias as $each )
+            @foreach (komoditas_pertanian($periode_id,4) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ($komoditas_tanaman_hias as $each )
+            @foreach (komoditas_pertanian($periode_id,4) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -233,22 +233,22 @@ $(document).ready(function() {
         type: 'pie', // jenis chart: pie
         data: {
     labels: [
-        @foreach ( $komoditas_rempah as $each )
+        @foreach ( komoditas_perkebunan($periode_id,5) as $each )
         '{{ $each->komoditas }}',
         @endforeach],
     datasets: [{
         label: '# of Votes',
         data: [
-            @foreach ( $komoditas_rempah as $each )
+            @foreach ( komoditas_perkebunan($periode_id,5) as $each )
             '{{ $each->jumlah }}',
             @endforeach],
         backgroundColor: [
-            @foreach ( $komoditas_rempah as $each )
+            @foreach ( komoditas_perkebunan($periode_id,5) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ( $komoditas_rempah as $each )
+            @foreach ( komoditas_perkebunan($periode_id,5) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -287,22 +287,22 @@ $(document).ready(function() {
     type: 'pie', // jenis chart: pie
     data: {
     labels: [
-        @foreach ( $komoditas_kelapa as $each )
+        @foreach ( komoditas_perkebunan($periode_id,6) as $each )
         '{{ $each->komoditas }}',
         @endforeach],
         datasets: [{
             label: '# of Votes',
             data: [
-                @foreach ( $komoditas_kelapa as $each )
+                @foreach ( komoditas_perkebunan($periode_id,6) as $each )
                 '{{ $each->jumlah }}',
                 @endforeach],
                 backgroundColor: [
-                    @foreach ( $komoditas_kelapa as $each )
+                    @foreach ( komoditas_perkebunan($periode_id,6) as $each )
                     '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ( $komoditas_kelapa as $each )
+            @foreach ( komoditas_perkebunan($periode_id,6) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -341,22 +341,22 @@ var myPieChart = new Chart(ctx, {
     type: 'pie', // jenis chart: pie
     data: {
         labels: [
-            @foreach ( $komoditas_tembakau as $each )
+            @foreach ( komoditas_perkebunan($periode_id,7) as $each )
             '{{ $each->komoditas }}',
             @endforeach],
             datasets: [{
                 label: '# of Votes',
         data: [
-            @foreach ( $komoditas_tembakau as $each )
+            @foreach ( komoditas_perkebunan($periode_id,7) as $each )
             '{{ $each->jumlah }}',
             @endforeach],
             backgroundColor: [
-                @foreach ( $komoditas_tembakau as $each )
+                @foreach ( komoditas_perkebunan($periode_id,7) as $each )
                 '{{ $each->warna }}',
                 @endforeach
             ],
             borderColor: [
-            @foreach ( $komoditas_tembakau as $each )
+            @foreach ( komoditas_perkebunan($periode_id,7) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
@@ -390,27 +390,27 @@ options: {
 });
 
 $(document).ready(function() {
-    var ctx = $('#myPieChart8');
+var ctx = $('#myPieChart8');
 var myPieChart = new Chart(ctx, {
     type: 'pie', // jenis chart: pie
     data: {
         labels: [
-            @foreach ( $komoditas_tanaman_pangan_industri as $each )
+            @foreach ( komoditas_perkebunan($periode_id,8) as $each )
         '{{ $each->komoditas }}',
         @endforeach],
         datasets: [{
             label: '# of Votes',
             data: [
-                @foreach ( $komoditas_tanaman_pangan_industri as $each )
+                @foreach ( komoditas_perkebunan($periode_id,8) as $each )
             '{{ $each->jumlah }}',
             @endforeach],
             backgroundColor: [
-                @foreach ( $komoditas_tanaman_pangan_industri as $each )
+                @foreach ( komoditas_perkebunan($periode_id,8) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],
         borderColor: [
-            @foreach ( $komoditas_tanaman_pangan_industri as $each )
+            @foreach ( komoditas_perkebunan($periode_id,8) as $each )
             '{{ $each->warna }}',
             @endforeach
         ],

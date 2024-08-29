@@ -104,7 +104,7 @@
                             <center>
                                 <h4>Sayuran (kg)</h4>
                             </center>
-                            @if ($komoditas_sayuran->isEmpty())
+                            @if (komoditas_pertanian($periode_id,1)->isEmpty())
                             <center>
                                 <p>tidak ada data.</p>
                             </center>
@@ -116,7 +116,7 @@
                             <center>
                                 <h4>Buah (kg)</h4>
                             </center>
-                            @if($komoditas_buah->isEmpty())
+                            @if(komoditas_pertanian($periode_id,2)->isEmpty())
                             <center>
                                 <p>tidak ada data.</p>
                             </center>
@@ -130,7 +130,7 @@
                             <center>
                                 <h4>Biofarmaka (kg)</h4>
                             </center>
-                            @if ($komoditas_biofarmaka->isEmpty())
+                            @if (komoditas_pertanian($periode_id,3)->isEmpty())
                             <center>
                                 <p>tidak ada data.</p>
                             </center>
@@ -142,7 +142,7 @@
                             <center>
                                 <h4>Tanaman Hias (tangkai)</h4>
                             </center>
-                            @if ($komoditas_tanaman_hias->isEmpty())
+                            @if (komoditas_pertanian($periode_id,4)->isEmpty())
                             <center>
                                 <p>tidak ada data.</p>
                             </center>
@@ -161,7 +161,7 @@
                     <center>
                         <h4>Rempah-rempah (kg)</h4>
                     </center>
-                    @if ($komoditas_rempah->isEmpty())
+                    @if (komoditas_perkebunan($periode_id,5)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -173,7 +173,7 @@
                     <center>
                         <h4>Kelapa (kg)</h4>
                     </center>
-                    @if($komoditas_kelapa->isEmpty())
+                    @if(komoditas_perkebunan($periode_id,6)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -187,7 +187,7 @@
                     <center>
                         <h4>Tembakau (kg)</h4>
                     </center>
-                    @if ($komoditas_tembakau->isEmpty())
+                    @if (komoditas_perkebunan($periode_id,7)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -199,7 +199,7 @@
                     <center>
                         <h4>Tanaman Pangan & Industri (kg)</h4>
                     </center>
-                    @if ($komoditas_tanaman_pangan_industri->isEmpty())
+                    @if (komoditas_perkebunan($periode_id,8)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -219,7 +219,7 @@
                     <center>
                         <h4>Rempah-rempah (kg)</h4>
                     </center>
-                    @if ($komoditas_rempah->isEmpty())
+                    @if (komoditas_perikanan($periode_id,9)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -231,7 +231,7 @@
                     <center>
                         <h4>Kelapa (kg)</h4>
                     </center>
-                    @if($komoditas_kelapa->isEmpty())
+                    @if(komoditas_perikanan($periode_id,10)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -245,7 +245,7 @@
                     <center>
                         <h4>Tembakau (kg)</h4>
                     </center>
-                    @if ($komoditas_tembakau->isEmpty())
+                    @if (komoditas_perikanan($periode_id,11)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -257,7 +257,7 @@
                     <center>
                         <h4>Tanaman Pangan & Industri (kg)</h4>
                     </center>
-                    @if ($komoditas_tanaman_pangan_industri->isEmpty())
+                    @if (komoditas_perikanan($periode_id,12)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -277,7 +277,7 @@
                     <center>
                         <h4>Ternak (ekor)</h4>
                     </center>
-                    @if ($komoditas_rempah->isEmpty())
+                    @if (komoditas_peternakan($periode_id,13)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>
@@ -289,7 +289,7 @@
                     <center>
                         <h4>Unggas (ekor)</h4>
                     </center>
-                    @if($komoditas_kelapa->isEmpty())
+                    @if(komoditas_peternakan($periode_id,14)->isEmpty())
                     <center>
                         <p>tidak ada data.</p>
                     </center>

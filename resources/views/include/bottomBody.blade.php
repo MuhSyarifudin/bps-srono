@@ -32,5 +32,4 @@
 <script src="{{ url('/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('/assets/js/pages/dashboard.js') }}"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
