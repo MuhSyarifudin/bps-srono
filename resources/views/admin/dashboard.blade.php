@@ -32,7 +32,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $jumlah_komoditas_pertanian/1000 }} ton</h3>
+                <h3>{{ $jumlah_komoditas_pertanian }}</h3>
 
                 <p><b>Komoditas Pertanian</b></p>
               </div>
@@ -47,7 +47,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ $jumlah_komoditas_perkebunan/1000 }} ton</h3>
+                <h3>{{ $jumlah_komoditas_perkebunan }}</h3>
 
                 <p>Sektor Perkebunan</p>
               </div>
@@ -61,7 +61,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ $jumlah_komoditas_perikanan/1000 }} ton</h3>
+                <h3>{{ $jumlah_komoditas_perikanan }}</h3>
 
                 <p>Sektor Perikanan</p>
               </div>
@@ -75,7 +75,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{ $jumlah_komoditas_peternakan }} ekor</h3>
+                <h3>{{ $jumlah_komoditas_peternakan }}</h3>
 
                 <p>Sektor Peternakan</p>
               </div>
@@ -86,42 +86,93 @@
           </div>
           <!-- ./col -->
         </div>
+        
       </div><!-- /.container-fluid -->
     </section>
-    <canvas id="lineChart" width="400" height="200"></canvas>
+    <section class="col-lg-7 connectedSortable ui-sortable">
+      <!-- Custom tabs (Charts with tabs)-->
+      <div class="card" style="position: relative; left: 0px; top: 0px;">
+        <div class="card-header ui-sortable-handle" style="cursor: move;">
+          <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            Komoditas Sektor
+          </h3>
+          <div class="card-tools">
+          </div>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <div style="width: 100%; margin: auto;">
+              <canvas id="myLineChart" style="height: 300px; display: block; width: 597px;" height="600" width="1194"></canvas>
+          </div>
+        </div><!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+      </div>
+      <!-- /.card -->
+    </section>
+
+    
 @endsection
 @push('scripts')
     <script>
-        // Mendefinisikan label dan data
-        const labels = Utils.months({count: 7});
-        const data = {
-          labels: labels,
-          datasets: [{
-            label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-          }]
-        };
+            $(document).ready(function(){
+          const ctx = $('#myLineChart')[0].getContext('2d');
 
-            $(document).ready(function() {
-        // Asumsikan ada elemen canvas dengan id 'myChart'
-        var ctx = $('#lineChart');
-
-        // Membuat chart menggunakan Chart.js
-        var myChart = new Chart(ctx, {
-          type: 'line',
-          data: data,
-          options: {
-            devicePixelRatio: 4,
-            responsive: true,
-            title: {
-              display: true,
-              text: 'Custom Chart Title'
-            }
-          }
-        });
+          const myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: [
+                  @foreach ( $periode as $each )
+                    {{ $each->periode }},
+                  @endforeach    
+                ],
+                  datasets: [{
+                      label: 'Pertanian',
+                      data: [
+                        @foreach ( $jumlah as $key => $value )
+                        {{ $jumlah[$key] }},
+                        @endforeach
+                      ],
+                      borderColor: 'rgba(75, 192, 192, 1)',
+                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                      fill: true,
+                      tension: 0.1,
+                  },{
+                    label: 'Perkebunan',
+                      data: [
+                        @foreach ( $jumlah1 as $key => $value )
+                        {{ $jumlah1[$key] }},
+                        @endforeach
+                      ],
+                      borderColor: 'rgba(0, 176, 47, 1)',
+                      backgroundColor: 'rgba(38, 255, 96, 0.2)',
+                      fill: true,
+                      tension: 0.1,
+                  },{
+                    label: 'Perikanan',
+                      data: [
+                        @foreach ( $jumlah2 as $key => $value )
+                        {{ $jumlah2[$key] }},
+                        @endforeach
+                      ],
+                      borderColor: 'rgba(237, 174, 0, 1)',
+                      backgroundColor: 'rgba(255, 216, 43, 0.2)',
+                      fill: true,
+                      tension: 0.1,
+                    }]
+              },
+              options: {
+                  responsive: true,
+                  scales: {
+                      x: {
+                          beginAtZero: true
+                      },
+                      y: {
+                          beginAtZero: true
+                      }
+                  }
+              }
+          });
       });
     </script>
 @endpush

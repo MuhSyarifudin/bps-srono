@@ -44,11 +44,37 @@ class LoginController extends Controller
         $periode_active = Periode::where('active','1')->first();
         $periode = Periode::all();
 
-        $jumlah_komoditas_pertanian = Komoditas::whereNot('jenis_id','4')->where('periode_id',$periode_active->id)->where('sektor_id','1')->sum('jumlah');
-        $jumlah_komoditas_perkebunan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','2')->sum('jumlah');
-        $jumlah_komoditas_perikanan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','3')->sum('jumlah');
-        $jumlah_komoditas_peternakan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','4')->sum('jumlah');
-        return view('admin.dashboard',['title'=>'Dashboard','jumlah_komoditas_pertanian'=>$jumlah_komoditas_pertanian,'jumlah_komoditas_perkebunan'=>$jumlah_komoditas_perkebunan,'jumlah_komoditas_pertanian'=>$jumlah_komoditas_pertanian,'jumlah_komoditas_perkebunan'=>$jumlah_komoditas_perkebunan,'jumlah_komoditas_perikanan'=>$jumlah_komoditas_perikanan,'jumlah_komoditas_peternakan'=>$jumlah_komoditas_peternakan,'periode_active'=>$periode_active,'periode'=>$periode]);
+        $jumlah_komoditas_pertanian = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','1')->count();
+        $jumlah_komoditas_perkebunan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','2')->count();
+        $jumlah_komoditas_perikanan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','3')->count();
+        $jumlah_komoditas_peternakan = Komoditas::where('periode_id',$periode_active->id)->where('sektor_id','4')->count();
+
+        $array= [];
+
+        foreach ($periode as $key => $value) {
+            $jumlah = Komoditas::whereNot('jenis_id','4')->where('sektor_id','1')->where('periode_id',$value->id)->sum('jumlah');
+            array_push($array,$jumlah);
+        };
+
+        $array1 = [];
+        
+        foreach ($periode as $key => $value) {
+            $jumlah = Komoditas::where('sektor_id','2')->where('periode_id',$value->id)->sum('jumlah');
+            array_push($array1,$jumlah);
+        }
+
+        $array2 = [];
+
+        foreach ($periode as $key => $value) {
+            $jumlah = Komoditas::where('sektor_id','3')->where('periode_id',$value->id)->sum('jumlah');
+            array_push($array2,$jumlah);
+        }
+
+        return view('admin.dashboard',['title'=>'Dashboard',
+        'jumlah'=>$array,
+        'jumlah1'=>$array1,
+        'jumlah2'=>$array2,
+        'jumlah_komoditas_pertanian'=>$jumlah_komoditas_pertanian,'jumlah_komoditas_perkebunan'=>$jumlah_komoditas_perkebunan,'jumlah_komoditas_pertanian'=>$jumlah_komoditas_pertanian,'jumlah_komoditas_perkebunan'=>$jumlah_komoditas_perkebunan,'jumlah_komoditas_perikanan'=>$jumlah_komoditas_perikanan,'jumlah_komoditas_peternakan'=>$jumlah_komoditas_peternakan,'periode_active'=>$periode_active,'periode'=>$periode]);
     }
 
     public function logout(){
