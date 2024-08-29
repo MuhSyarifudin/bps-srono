@@ -73,10 +73,9 @@
                                                 is-invalid
                                             @enderror">
                                                 <option value="">Pilih Jenis Komoditas</option>
-                                                <option value="1">Sayuran</option>
-                                                <option value="2">Buah</option>
-                                                <option value="3">Biofarmaka</option>
-                                                <option value="4">Tanaman Hias</option>
+                                                @foreach ($jenis as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->jenis_komoditas }}</option>
+                                                @endforeach
                                             </select>
                                             @error('jenis')
                                                 <p class="text-danger">{{ $message }}</p>
@@ -184,11 +183,10 @@
                                                     <select name="jenis" id="jenis" class="form-control @error('jenis')
                                                         is-invalid
                                                     @enderror">
-                                                        <option value="">Pilih Jenis Komoditas</option>
-                                                        <option value="1" {{ $item->jenis_id == 1 ? "selected" : "" }}>Sayuran</option>
-                                                        <option value="2" {{ $item->jenis_id == 2 ? "selected" : "" }}>Buah</option>
-                                                        <option value="3" {{ $item->jenis_id == 3 ? "selected" : "" }}>Biofarmaka</option>
-                                                        <option value="4" {{ $item->jenis_id == 4 ? "selected" : "" }}>Tanaman Hias</option>
+                                                    <option value="">Pilih Jenis Komoditas</option>
+                                                    @foreach ($jenis as $item2)
+                                                    <option value="{{ $item2->id }}" {{ $item->jenis_id == $item2->id ? "selected" : "" }}>{{ $item2->jenis_komoditas }}</option>
+                                                    @endforeach
                                                     </select>
                                                     @error('jenis')
                                                         <p class="text-danger">{{ $message }}</p>

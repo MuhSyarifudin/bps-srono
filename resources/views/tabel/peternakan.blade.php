@@ -6,16 +6,16 @@
 @endpush
 @section('content')
 <div class="content-wrapper">
-    <div class="card card-outline card-warning">
+    <div class="card card-outline card-danger">
         <div class="card-header">
             <div class="card-title">
-            <h2>Sektor Perikanan</h2>
+            <h2>Sektor Peternakan</h2>
             </div>
             <div class="card-body">
                 <div class="row container-fluid">
                     <div class="col-md-2">
                         <label for="periode">Periode : </label>
-                        <form action="{{ route('index.sektor.perikanan') }}" style="width: 150px;margin-bottom: 20px">
+                        <form action="{{ route('index.sektor.peternakan') }}" style="width: 150px;margin-bottom: 20px">
                             <select name="periode" id="periode" onchange="this.form.submit()" class="form-control">
                                 <option value="">Pilih Periode</option>
                                 @foreach ($periode as $item )
@@ -36,13 +36,13 @@
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title">Tambah Komoditas Perikanan</h4>
+                                  <h4 class="modal-title">Tambah Komoditas Peternakan</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('simpan.sektor.perikanan') }}?periode={{ $periode_id }}" method="POST">
+                                    <form action="{{ route('simpan.sektor.peternakan') }}?periode={{ $periode_id }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="komoditas">Nama Komoditas : </label>
@@ -135,7 +135,7 @@
                         </th>
                     </thead>
                     <tbody>
-                        @foreach ($komoditas_sektor_perikanan as $key => $item)
+                        @foreach ($komoditas_sektor_peternakan as $key => $item)
                         <tr>
                             <th>{{ $key + 1 }}.</th>
                             <td>{{ $item->komoditas }}</td>
@@ -146,14 +146,14 @@
                                     <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h4 class="modal-title">Edit Komoditas Perikanan</h4>
+                                        <h4 class="modal-title">Edit Komoditas Peternakan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         </div>
                                         <div class="modal-body">
                                             
-                                            <form action="{{ route('update.sektor.perikanan', ['id' => $item->id]) }}?periode={{ $periode_id }}" method="POST">
+                                            <form action="{{ route('update.sektor.peternakan', ['id' => $item->id]) }}?periode={{ $periode_id }}" method="POST">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="komoditas">Nama Komoditas : </label>
@@ -226,7 +226,7 @@
                             </td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit-{{ $item->id }}">Edit</button>
-                                <a href="{{ route('hapus.sektor.perikanan',['id'=>$item->id,'periode'=>$item->periode_id]) }}" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="{{ route('hapus.sektor.peternakan',['id'=>$item->id,'periode'=>$item->periode_id]) }}" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                         </tr>    
                         @endforeach

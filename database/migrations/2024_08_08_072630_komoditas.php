@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('komoditas');
             $table->string('sektor_id');
             $table->string('jenis_id');
+            $table->string('periode_id');
             $table->string('warna');
             $table->string('jumlah');
             $table->timestamps();

@@ -6,16 +6,16 @@
 @endpush
 @section('content')
 <div class="content-wrapper">
-    <div class="card card-outline card-info">
+    <div class="card card-outline card-success">
         <div class="card-header">
             <div class="card-title">
-            <h2>Sektor Pertanian</h2>
+            <h2>Sektor Perkebunan</h2>
             </div>
             <div class="card-body">
                 <div class="row container-fluid">
                     <div class="col-md-2">
                         <label for="periode">Periode : </label>
-                        <form action="{{ route('index.sektor.pertanian') }}" style="width: 150px;margin-bottom: 20px">
+                        <form action="{{ route('index.sektor.perkebunan') }}" style="width: 150px;margin-bottom: 20px">
                             <select name="periode" id="periode" onchange="this.form.submit()" class="form-control">
                                 <option value="">Pilih Periode</option>
                                 @foreach ($periode as $item )
@@ -42,7 +42,7 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('simpan.sektor.pertanian') }}?periode={{ $periode_id }}" method="POST">
+                                    <form action="{{ route('simpan.sektor.perkebunan') }}?periode={{ $periode_id }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="komoditas">Nama Komoditas : </label>
@@ -73,10 +73,9 @@
                                                 is-invalid
                                             @enderror">
                                                 <option value="">Pilih Jenis Komoditas</option>
-                                                <option value="1">Sayuran</option>
-                                                <option value="2">Buah</option>
-                                                <option value="3">Biofarmaka</option>
-                                                <option value="4">Tanaman Hias</option>
+                                                @foreach ($jenis as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->jenis_komoditas }}</option>
+                                                @endforeach
                                             </select>
                                             @error('jenis')
                                                 <p class="text-danger">{{ $message }}</p>
@@ -136,25 +135,25 @@
                         </th>
                     </thead>
                     <tbody>
-                        @foreach ($komoditas_sektor_pertanian as $key => $item)
+                        @foreach ($komoditas_sektor_perkebunan as $key => $item)
                         <tr>
                             <th>{{ $key + 1 }}.</th>
                             <td>{{ $item->komoditas }}</td>
-                            <td>{{ $item->jumlah }} {{ $item->jenis->id !== 4 ? 'Kg' : 'Tangkai' }}</td>
-                            <td>{{ ucwords($item->jenis->jenis) }}</td>
+                            <td>{{ $item->jumlah." "  }}{{ $item->jk_id !== 4 ? 'Kg' : 'Tangkai' }}</td>
+                            <td>{{ ucwords($item->jenis_komoditas) }}</td>
                             <td width="120"><div style="width: 200px;height: 20px;background-color: {{ $item->warna }}"></div>
                                 <div class="modal fade" id="modal-edit-{{ $item->id }}">
                                     <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h4 class="modal-title">Edit Komoditas Pertanian</h4>
+                                        <h4 class="modal-title">Edit Komoditas Perkebunan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         </div>
                                         <div class="modal-body">
                                             
-                                            <form action="{{ route('update.sektor.pertanian', ['id' => $item->id]) }}?periode={{ $periode_id }}" method="POST">
+                                            <form action="{{ route('update.sektor.perkebunan', ['id' => $item->id]) }}?periode={{ $periode_id }}" method="POST">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="komoditas">Nama Komoditas : </label>
@@ -166,17 +165,16 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="jenis">Jenis Komoditas : </label>
-                                                    <select name="jenis" id="jenis" class="form-control @error('jenis')
-                                                        is-invalid
+                                                    <label for="periode">Periode : </label>
+                                                    <select name="periode" id="periode" class="form-control @error('periode')
+                                                    is-invalid                        
                                                     @enderror">
-                                                        <option value="">Pilih Jenis Komoditas</option>
-                                                        <option value="1">Sayuran</option>
-                                                        <option value="2">Buah</option>
-                                                        <option value="3">Biofarmaka</option>
-                                                        <option value="4">Tanaman Hias</option>
+                                                        <option value="">Pilih Periode</option>
+                                                        @foreach ($periode as $item2)
+                                                        <option value="{{ $item2->id }}" {{ $item2->id == $item->periode_id ? 'selected' : '' }}>{{ $item2->periode }}</option>
+                                                        @endforeach
                                                     </select>
-                                                    @error('jenis')
+                                                    @error('periode')
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
@@ -185,12 +183,11 @@
                                                     <select name="jenis" id="jenis" class="form-control @error('jenis')
                                                         is-invalid
                                                     @enderror">
-                                                        <option value="">Pilih Jenis Komoditas</option>
-                                                        <option value="1" {{ $item->jenis_id == 1 ? "selected" : "" }}>Sayuran</option>
-                                                        <option value="2" {{ $item->jenis_id == 2 ? "selected" : "" }}>Buah</option>
-                                                        <option value="3" {{ $item->jenis_id == 3 ? "selected" : "" }}>Biofarmaka</option>
-                                                        <option value="4" {{ $item->jenis_id == 4 ? "selected" : "" }}>Tanaman Hias</option>
-                                                    </select>
+                                                    <option value="">Pilih Jenis Komoditas</option>
+                                                    @foreach ($jenis as $item2)
+                                                        <option value="{{ $item2->id }}" {{ $item->jenis_id == $item2->id ? "selected" : "" }}>{{ $item2->jenis_komoditas }}</option>
+                                                    @endforeach
+                                                        </select>
                                                     @error('jenis')
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
@@ -228,9 +225,8 @@
                                 <!-- /.modal -->
                             </td>
                             <td class="text-center">
-                                {{-- <a href="{{ route('edit.sektor.pertanian',['id'=>$item->id]) }}" class="btn btn-sm btn-primary">Edit</a> --}}
                                 <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit-{{ $item->id }}">Edit</button>
-                                <a href="{{ route('hapus.sektor.pertanian',['id'=>$item->id,'periode'=>$item->periode_id]) }}" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="{{ route('hapus.sektor.perkebunan',['id'=>$item->id,'periode'=>$item->periode_id]) }}" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                         </tr>    
                         @endforeach

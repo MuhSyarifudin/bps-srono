@@ -15,20 +15,56 @@ class KomoditasSeeder extends Seeder
     public function run(): void
     {
 
+
         DB::table('komoditas')->truncate();
 
-        $komoditas = 
-        [
-            ["komoditas"=>"Cabai Rawit","jumlah"=>"2000","periode_id"=>"3","sektor_id"=>"1","jenis_id"=>"1","warna"=>"#32a852"],
-            ["komoditas"=>"Bawang Merah","jumlah"=>"3000","periode_id"=>"3","sektor_id"=>"1","jenis_id"=>"1","warna"=>"#32a883"],
-            ["komoditas"=>"Cabai Besar","jumlah"=>"3200","periode_id"=>"3","sektor_id"=>"1","jenis_id"=>"1","warna"=>"#328da8"],
-            ["komoditas"=>"Semangka","jumlah"=>"100","periode_id"=>"3","sektor_id"=>"1","jenis_id"=>"2","warna"=>"#a83232"],
-            ["komoditas"=>"Jahe","jumlah"=>"100","periode_id"=>"3","sektor_id"=>"1","jenis_id"=>"3","warna"=>"#a8329b"],
-            ["komoditas"=>"Laos","jumlah"=>"100","periode_id"=>"3","sektor_id"=>"1","jenis_id"=>"3","warna"=>"#4e32a8"]
-        ];
-
-        foreach ($komoditas as $each) {
+        $komoditas = [[
+            'komoditas' => 'Cabai rawit',
+            'sektor_id'=>'1',
+            'periode_id' => '3',
+            'jumlah' => '8382',
+            'warna'=> '#FF6384',
+            'jenis_id'=>'1'
+        ],[
+            'komoditas' => 'Bawang merah',
+            'sektor_id'=>'1',
+            'periode_id' => '3',
+            'jumlah' => '6623',
+            'warna'=> '#36A2EB',
+            'jenis_id'=>'1'
+        ],[
+            'komoditas' => 'Cabai besar',
+            'sektor_id'=>'1',
+            'periode_id' => '3',
+            'jumlah' => '4900',
+            'warna'=> '#FFCE56',
+            'jenis_id'=>'1'
+        ],[
+            'komoditas' => 'Semangka',
+            'sektor_id'=>'1',
+            'periode_id' => '3',
+            'jumlah' => '115',
+            'warna'=> '#FF6384',
+            'jenis_id'=>'2'
+        ],[
+            'komoditas' => 'Jahe',
+            'sektor_id'=>'1',
+            'periode_id' => '3',
+            'jumlah' => '4000',
+            'warna'=> '#36A2EB',
+            'jenis_id'=>'3'
+        ],[
+            'komoditas' => 'Laos',
+            'sektor_id'=>'1',
+            'periode_id' => '3',
+            'jumlah' => '2100',
+            'warna'=> '#4BC0C0',
+            'jenis_id'=>'3'
+        ]];
+        
+      
+        foreach($komoditas as $each){
             Komoditas::create($each);
-        }
+        };
     }
 }

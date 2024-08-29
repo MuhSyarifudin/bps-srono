@@ -16,7 +16,8 @@ class SektorSeeder extends Seeder
         $sektor = [
             ["nama_sektor"=>"pertanian"],
             ["nama_sektor"=>"perkebunan"],
-            ["nama_sektor"=>"perikanan"]
+            ["nama_sektor"=>"perikanan"],
+            ["nama_sektor"=>"peternakan"]
         ];
 
         foreach ($sektor as $each) {

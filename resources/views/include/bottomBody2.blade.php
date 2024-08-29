@@ -1,5 +1,7 @@
 <script>
-    $(document).ready(function() {
+
+@if ($sektor_id == 1)
+$(document).ready(function() {
 var ctx = $('#myPieChart');
 var myPieChart = new Chart(ctx, {
 type: 'pie', // jenis chart: pie
@@ -222,9 +224,229 @@ options: {
 });
 });
 
+@elseif ($sektor_id == 2)
+
+    
 $(document).ready(function() {
-var ctx = document.getElementById('myBarChart').getContext('2d');
-var myBarChart = new Chart(ctx, {
+    var ctx = $('#myPieChart5');
+    var myPieChart = new Chart(ctx, {
+        type: 'pie', // jenis chart: pie
+        data: {
+    labels: [
+        @foreach ( $komoditas_rempah as $each )
+        '{{ $each->komoditas }}',
+        @endforeach],
+    datasets: [{
+        label: '# of Votes',
+        data: [
+            @foreach ( $komoditas_rempah as $each )
+            '{{ $each->jumlah }}',
+            @endforeach],
+        backgroundColor: [
+            @foreach ( $komoditas_rempah as $each )
+            '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderColor: [
+            @foreach ( $komoditas_rempah as $each )
+            '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+    devicePixelRatio: 4,
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    let label = context.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.raw !== null) {
+                        label += context.raw + ' kg';
+                    }
+                    return label;
+                }
+            }
+        }
+    }
+}
+});
+});
+
+$(document).ready(function() {
+    var ctx = $('#myPieChart6');
+    var myPieChart = new Chart(ctx, {
+    type: 'pie', // jenis chart: pie
+    data: {
+    labels: [
+        @foreach ( $komoditas_kelapa as $each )
+        '{{ $each->komoditas }}',
+        @endforeach],
+        datasets: [{
+            label: '# of Votes',
+            data: [
+                @foreach ( $komoditas_kelapa as $each )
+                '{{ $each->jumlah }}',
+                @endforeach],
+                backgroundColor: [
+                    @foreach ( $komoditas_kelapa as $each )
+                    '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderColor: [
+            @foreach ( $komoditas_kelapa as $each )
+            '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+    devicePixelRatio: 4,
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    let label = context.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.raw !== null) {
+                        label += context.raw + ' kg';
+                    }
+                    return label;
+                }
+            }
+        }
+    }
+}
+});
+});
+
+$(document).ready(function() {
+var ctx = $('#myPieChart7');
+var myPieChart = new Chart(ctx, {
+    type: 'pie', // jenis chart: pie
+    data: {
+        labels: [
+            @foreach ( $komoditas_tembakau as $each )
+            '{{ $each->komoditas }}',
+            @endforeach],
+            datasets: [{
+                label: '# of Votes',
+        data: [
+            @foreach ( $komoditas_tembakau as $each )
+            '{{ $each->jumlah }}',
+            @endforeach],
+            backgroundColor: [
+                @foreach ( $komoditas_tembakau as $each )
+                '{{ $each->warna }}',
+                @endforeach
+            ],
+            borderColor: [
+            @foreach ( $komoditas_tembakau as $each )
+            '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+    devicePixelRatio: 4,
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    let label = context.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.raw !== null) {
+                        label += context.raw + ' kg';
+                    }
+                    return label;
+                }
+            }
+        }
+    }
+}
+});
+});
+
+$(document).ready(function() {
+    var ctx = $('#myPieChart8');
+var myPieChart = new Chart(ctx, {
+    type: 'pie', // jenis chart: pie
+    data: {
+        labels: [
+            @foreach ( $komoditas_tanaman_pangan_industri as $each )
+        '{{ $each->komoditas }}',
+        @endforeach],
+        datasets: [{
+            label: '# of Votes',
+            data: [
+                @foreach ( $komoditas_tanaman_pangan_industri as $each )
+            '{{ $each->jumlah }}',
+            @endforeach],
+            backgroundColor: [
+                @foreach ( $komoditas_tanaman_pangan_industri as $each )
+            '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderColor: [
+            @foreach ( $komoditas_tanaman_pangan_industri as $each )
+            '{{ $each->warna }}',
+            @endforeach
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+    devicePixelRatio: 4,
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    let label = context.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.raw !== null) {
+                        label += context.raw + ' kg';
+                    }
+                    return label;
+                }
+            }
+        }
+    }
+}
+});
+});
+@endif
+
+$(document).ready(function() {
+    var ctx = document.getElementById('myBarChart').getContext('2d');
+    var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Sumbersari', 'Kepundungan ', 'Kebaman', 'Sukonatar', 'Bagorejo', 'Rejoagung','Wonosobo','Sukomaju','Parijatah Wetan','Parijatah Kulon'],
@@ -281,6 +503,7 @@ $(document).ready(function() {
             ]
         },
         options: {
+            devicePixelRatio: 4,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -310,18 +533,8 @@ $(document).ready(function() {
 });
 
 
-function submitFormWithPeriode(selectElement) {
-var form = document.getElementById('periodeForm');
-var selectedValue = selectElement.value;
-var routeTemplate = "{{ route('tampilkan.per.periode', ['periode' => ':periode']) }}";
-var actionUrl = routeTemplate.replace(':periode', selectedValue) + "#komoditas";
-form.action = actionUrl;
-form.submit();
-}
-
-// jQuery code for handling the button behavior
+//untuk smooth scroll
 $(document).ready(function() {
-    // Show or hide the button based on scroll position
     $(window).scroll(function() {
         if ($(this).scrollTop() > 100) {
             $('#pushToTopBtn').fadeIn();
@@ -330,7 +543,6 @@ $(document).ready(function() {
         }
     });
 
-    // Smooth scroll to top when button is clicked
     $('#pushToTopBtn').click(function() {
         $('html, body').animate({scrollTop: 0}, 800);
     });

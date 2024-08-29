@@ -32,7 +32,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $jumlah_seluruh_komoditas/1000 }} ton</h3>
+                <h3>{{ $jumlah_komoditas_pertanian/1000 }} ton</h3>
 
                 <p><b>Komoditas Pertanian</b></p>
               </div>
@@ -47,13 +47,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>0</h3>
+                <h3>{{ $jumlah_komoditas_perkebunan/1000 }} ton</h3>
 
                 <p>Sektor Perkebunan</p>
               </div>
               <div class="icon">
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('index.sektor.perkebunan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,13 +61,13 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>0</h3>
+                <h3>{{ $jumlah_komoditas_perikanan/1000 }} ton</h3>
 
-                <p>Sektor Perkebunan</p>
+                <p>Sektor Perikanan</p>
               </div>
               <div class="icon">
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('index.sektor.perikanan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -75,13 +75,13 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>0</h3>
+                <h3>{{ $jumlah_komoditas_peternakan }} ekor</h3>
 
-                <p>Pendidikan</p>
+                <p>Sektor Peternakan</p>
               </div>
               <div class="icon">
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('index.sektor.peternakan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
